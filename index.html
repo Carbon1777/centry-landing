@@ -7,6 +7,8 @@
   <meta name="description" content="Centry — мобильное приложение для совместного планирования досуга с друзьями. Находите места, создавайте планы, голосуйте и встречайтесь.">
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -313,24 +315,38 @@
     <div class="container">
       <h2 class="section-title">Правила проекта</h2>
       <div class="legal__grid">
-        <div class="legal__card">
+        <div class="legal__card" data-doc-type="PRIVACY">
           <h3>Политика конфиденциальности</h3>
           <p>Мы заботимся о безопасности ваших данных. Ознакомьтесь с тем, как мы собираем, используем и защищаем вашу персональную информацию.</p>
-          <a href="#" class="legal__link">Читать полностью &rarr;</a>
+          <a href="javascript:void(0)" class="legal__link">Читать полностью &rarr;</a>
         </div>
-        <div class="legal__card">
+        <div class="legal__card" data-doc-type="TERMS">
           <h3>Пользовательское соглашение</h3>
           <p>Условия использования приложения Centry, права и обязанности пользователей и администрации сервиса.</p>
-          <a href="#" class="legal__link">Читать полностью &rarr;</a>
+          <a href="javascript:void(0)" class="legal__link">Читать полностью &rarr;</a>
         </div>
-        <div class="legal__card">
+        <div class="legal__card" data-doc-type="BONUS_RULES">
           <h3>Правила сообщества</h3>
           <p>Принципы взаимодействия в Centry: уважение к другим пользователям, допустимый контент и модерация.</p>
-          <a href="#" class="legal__link">Читать полностью &rarr;</a>
+          <a href="javascript:void(0)" class="legal__link">Читать полностью &rarr;</a>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ========== LEGAL DOCUMENT MODAL ========== -->
+  <div class="legal-modal" id="legalModal">
+    <div class="legal-modal__overlay" id="legalModalOverlay"></div>
+    <div class="legal-modal__content">
+      <div class="legal-modal__header">
+        <h2 class="legal-modal__title" id="legalModalTitle"></h2>
+        <button class="legal-modal__close" id="legalModalClose" aria-label="Закрыть">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="legal-modal__body" id="legalModalBody"></div>
+    </div>
+  </div>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
@@ -389,6 +405,79 @@
     document.querySelectorAll('.about__card, .features__step, .videos__card, .download__store, .contacts__card, .legal__card').forEach(el => {
       el.classList.add('fade-in');
       observer.observe(el);
+    });
+
+    // ========== LEGAL DOCUMENTS (Supabase) ==========
+    const supabase = window.supabase.createClient(
+      'https://lqgzvolirohuettizkhx.supabase.co',
+      'sb_publishable_YlYQC-Sv2prP2QPmZs48rA_gjSb62aB'
+    );
+
+    // Cache for loaded documents
+    let legalDocsCache = null;
+
+    async function loadLegalDocuments() {
+      if (legalDocsCache) return legalDocsCache;
+      const { data, error } = await supabase.rpc('get_current_legal_documents_v1');
+      if (error) {
+        console.error('Failed to load legal documents:', error);
+        return null;
+      }
+      legalDocsCache = data;
+      return data;
+    }
+
+    // Modal elements
+    const legalModal = document.getElementById('legalModal');
+    const legalModalOverlay = document.getElementById('legalModalOverlay');
+    const legalModalClose = document.getElementById('legalModalClose');
+    const legalModalTitle = document.getElementById('legalModalTitle');
+    const legalModalBody = document.getElementById('legalModalBody');
+
+    function openLegalModal(title, content) {
+      legalModalTitle.textContent = title;
+      legalModalBody.innerHTML = content;
+      legalModal.classList.add('open');
+      document.body.classList.add('no-scroll');
+    }
+
+    function closeLegalModal() {
+      legalModal.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+    }
+
+    legalModalOverlay.addEventListener('click', closeLegalModal);
+    legalModalClose.addEventListener('click', closeLegalModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLegalModal();
+    });
+
+    // Attach click handlers to legal cards
+    document.querySelectorAll('.legal__card[data-doc-type]').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', async () => {
+        const docType = card.dataset.docType;
+
+        // Show loading state
+        openLegalModal('Загрузка...', '<p style="color: var(--text-secondary);">Загружаем документ...</p>');
+
+        const docs = await loadLegalDocuments();
+        if (!docs) {
+          legalModalTitle.textContent = 'Ошибка';
+          legalModalBody.innerHTML = '<p style="color: var(--text-secondary);">Не удалось загрузить документ. Попробуйте позже.</p>';
+          return;
+        }
+
+        const doc = docs.find(d => d.document_type === docType);
+        if (!doc) {
+          legalModalTitle.textContent = 'Не найдено';
+          legalModalBody.innerHTML = '<p style="color: var(--text-secondary);">Документ не найден.</p>';
+          return;
+        }
+
+        legalModalTitle.textContent = doc.title;
+        legalModalBody.innerHTML = doc.content;
+      });
     });
   </script>
 
