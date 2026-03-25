@@ -436,16 +436,26 @@
         return supabaseClient;
       }
 
+      var savedScrollY = 0;
+
       function openModal(title, body) {
         legalModalTitle.textContent = title;
         legalModalBody.innerHTML = body;
+        savedScrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = '-' + savedScrollY + 'px';
+        document.body.style.left = '0';
+        document.body.style.right = '0';
         legalModal.classList.add('open');
-        document.body.classList.add('no-scroll');
       }
 
       function closeModal() {
         legalModal.classList.remove('open');
-        document.body.classList.remove('no-scroll');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        window.scrollTo(0, savedScrollY);
       }
 
       legalModalOverlay.addEventListener('click', closeModal);
