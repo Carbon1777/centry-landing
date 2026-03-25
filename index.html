@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centry — Открывайте новые места вместе</title>
+  <meta name="description" content="Centry — мобильное приложение для совместного планирования досуга с друзьями. Находите места, создавайте планы, голосуйте и встречайтесь.">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <img src="images/logo.png" alt="Centry" class="header__logo-img">
+        <span class="header__logo-text">Centry</span>
+      </a>
+      <nav class="header__nav">
+        <a href="#about">О приложении</a>
+        <a href="#features">Возможности</a>
+        <a href="#videos">Обучение</a>
+        <a href="#download">Скачать</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <button class="header__burger" aria-label="Меню" id="burger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <nav class="mobile-nav__links">
+      <a href="#about">О приложении</a>
+      <a href="#features">Возможности</a>
+      <a href="#videos">Обучение</a>
+      <a href="#download">Скачать</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero__glow"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <img src="images/logo.png" alt="Centry" class="hero__logo">
+        <h1 class="hero__title">Centry</h1>
+        <p class="hero__slogan">Открывайте новые места вместе</p>
+        <p class="hero__desc">Планируйте досуг с друзьями без бесконечных переписок. Находите лучшие места, голосуйте за дату и время, встречайтесь.</p>
+        <div class="hero__buttons">
+          <a href="#download" class="btn btn--secondary">
+            <svg width="18" height="22" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-62.1 24-72.5-24 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            App Store
+          </a>
+          <a href="#download" class="btn btn--secondary">
+            <svg width="18" height="20" viewBox="0 0 512 512" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+            Google Play
+          </a>
+          <a href="#download" class="btn btn--secondary">
+            <svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+            RuStore
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">О приложении</h2>
+      <p class="section-subtitle">Centry решает проблему «куда пойти и когда» для компании друзей</p>
+      <div class="about__grid">
+        <div class="about__card">
+          <div class="about__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Находите места</h3>
+          <p>Каталог ресторанов, баров, кинотеатров и других заведений с рейтингами. Добавьте своё место, если не нашли его в каталоге</p>
+        </div>
+        <div class="about__card">
+          <div class="about__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Создавайте планы</h3>
+          <p>Предложите варианты мест и дат — друзья проголосуют и выберут лучший</p>
+        </div>
+        <div class="about__card">
+          <div class="about__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Приглашайте друзей</h3>
+          <p>Добавляйте друзей, общайтесь в приватных чатах</p>
+        </div>
+        <div class="about__card">
+          <div class="about__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Обсуждайте</h3>
+          <p>Встроенный чат внутри каждого плана и приватные переписки с друзьями</p>
+        </div>
+        <div class="about__card">
+          <div class="about__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Знаки внимания</h3>
+          <p>Отправляйте ежедневные знаки симпатии и соревнуйтесь в лидерборде</p>
+        </div>
+        <div class="about__card">
+          <div class="about__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Бонусы</h3>
+          <p>Получайте токены за активность — планы, приглашения друзей</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FEATURES (визуальный разделитель) ========== -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Как это работает</h2>
+      <p class="section-subtitle">Вместо бесконечной переписки — структурированный процесс</p>
+      <div class="features__steps">
+        <div class="features__step">
+          <div class="features__step-num">1</div>
+          <h3>Создайте план</h3>
+          <p>Выберите тему встречи и предложите варианты мест из каталога</p>
+        </div>
+        <div class="features__step-arrow">
+          <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><path d="M2 12h36m0 0l-8-8m8 8l-8 8" stroke="#5B8DFF" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="features__step">
+          <div class="features__step-num">2</div>
+          <h3>Пригласите друзей</h3>
+          <p>Отправьте ссылку или добавьте из списка контактов в приложении</p>
+        </div>
+        <div class="features__step-arrow">
+          <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><path d="M2 12h36m0 0l-8-8m8 8l-8 8" stroke="#5B8DFF" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="features__step">
+          <div class="features__step-num">3</div>
+          <h3>Голосуйте</h3>
+          <p>Каждый участник выбирает удобную дату и понравившееся место</p>
+        </div>
+        <div class="features__step-arrow">
+          <svg width="40" height="24" viewBox="0 0 40 24" fill="none"><path d="M2 12h36m0 0l-8-8m8 8l-8 8" stroke="#5B8DFF" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="features__step">
+          <div class="features__step-num">4</div>
+          <h3>Встречайтесь!</h3>
+          <p>Итоги голосования — готовый план с местом, датой и участниками</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VIDEOS ========== -->
+  <section class="videos" id="videos">
+    <div class="container">
+      <h2 class="section-title">Обучение</h2>
+      <p class="section-subtitle">Видео-инструкции для быстрого старта</p>
+      <div class="videos__grid">
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Регистрация и профиль</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Поиск мест на карте</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Создание плана</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Приглашение друзей</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Голосование</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Чаты и общение</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Знаки внимания</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Бонусные токены</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Лидерборд</p>
+        </div>
+        <div class="videos__card">
+          <div class="videos__placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
+          </div>
+          <p class="videos__label">Настройки и FAQ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DOWNLOAD ========== -->
+  <section class="download" id="download">
+    <div class="container">
+      <h2 class="section-title">Скачать Centry</h2>
+      <p class="section-subtitle">Доступно для iOS и Android</p>
+      <div class="download__grid">
+        <div class="download__store">
+          <div class="download__qr" id="qr-appstore">
+            <div class="download__qr-placeholder">
+              <span>QR</span>
+              <small>App Store</small>
+            </div>
+          </div>
+          <a href="#" class="btn btn--store">
+            <svg width="18" height="22" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-62.1 24-72.5-24 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            App Store
+          </a>
+        </div>
+        <div class="download__store">
+          <div class="download__qr" id="qr-google">
+            <div class="download__qr-placeholder">
+              <span>QR</span>
+              <small>Google Play</small>
+            </div>
+          </div>
+          <a href="#" class="btn btn--store">
+            <svg width="18" height="20" viewBox="0 0 512 512" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+            Google Play
+          </a>
+        </div>
+        <div class="download__store">
+          <div class="download__qr" id="qr-rustore">
+            <div class="download__qr-placeholder">
+              <span>QR</span>
+              <small>RuStore</small>
+            </div>
+          </div>
+          <a href="#" class="btn btn--store">
+            <svg width="18" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+            RuStore
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACTS ========== -->
+  <section class="contacts" id="contacts">
+    <div class="container">
+      <h2 class="section-title">Контакты</h2>
+      <div class="contacts__grid">
+        <div class="contacts__card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <h3>Email</h3>
+          <a href="mailto:support@centry.website">support@centry.website</a>
+        </div>
+        <div class="contacts__card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <h3>Сайт</h3>
+          <a href="https://centry.website">centry.website</a>
+        </div>
+        <div class="contacts__card">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B8DFF" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <h3>Поддержка</h3>
+          <p>Через приложение</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LEGAL ========== -->
+  <section class="legal" id="legal">
+    <div class="container">
+      <h2 class="section-title">Правила проекта</h2>
+      <div class="legal__grid">
+        <div class="legal__card">
+          <h3>Политика конфиденциальности</h3>
+          <p>Мы заботимся о безопасности ваших данных. Ознакомьтесь с тем, как мы собираем, используем и защищаем вашу персональную информацию.</p>
+          <a href="#" class="legal__link">Читать полностью &rarr;</a>
+        </div>
+        <div class="legal__card">
+          <h3>Пользовательское соглашение</h3>
+          <p>Условия использования приложения Centry, права и обязанности пользователей и администрации сервиса.</p>
+          <a href="#" class="legal__link">Читать полностью &rarr;</a>
+        </div>
+        <div class="legal__card">
+          <h3>Правила сообщества</h3>
+          <p>Принципы взаимодействия в Centry: уважение к другим пользователям, допустимый контент и модерация.</p>
+          <a href="#" class="legal__link">Читать полностью &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__logo">
+        <img src="images/logo.png" alt="Centry" class="footer__logo-img">
+        <span>Centry</span>
+      </div>
+      <p class="footer__copy">&copy; 2026 Centry. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      mobileNav.classList.toggle('open');
+      document.body.classList.toggle('no-scroll');
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        mobileNav.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Header shrink on scroll
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('header--scrolled', window.scrollY > 50);
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.about__card, .features__step, .videos__card, .download__store, .contacts__card, .legal__card').forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
