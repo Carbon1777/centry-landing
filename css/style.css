@@ -457,16 +457,16 @@ section { padding: 100px 0; }
 .contacts { background: var(--bg); }
 .contacts__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 800px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 900px;
   margin: 0 auto;
 }
 .contacts__card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 32px;
+  padding: 24px 16px;
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -486,9 +486,10 @@ section { padding: 100px 0; }
   letter-spacing: 1px;
 }
 .contacts__card a, .contacts__card p {
-  font-size: 15px;
+  font-size: 13px;
   color: var(--accent);
-  word-break: break-all;
+  word-break: keep-all;
+  white-space: nowrap;
 }
 .contacts__card a:hover {
   text-decoration: underline;
@@ -628,7 +629,7 @@ section { padding: 100px 0; }
   .download__grid { gap: 40px; }
   .download__qr { width: 150px; height: 150px; }
 
-  .contacts__grid { grid-template-columns: 1fr; }
+  .contacts__grid { grid-template-columns: repeat(2, 1fr); }
 
   .legal__grid { grid-template-columns: 1fr; }
 
