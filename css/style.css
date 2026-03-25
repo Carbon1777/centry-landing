@@ -457,9 +457,9 @@ section { padding: 100px 0; }
 .contacts { background: var(--bg); }
 .contacts__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 .contacts__card {
