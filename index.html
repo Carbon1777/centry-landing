@@ -413,77 +413,88 @@
     });
 
     // ========== LEGAL DOCUMENTS (Supabase) ==========
-    const supabase = window.supabase.createClient(
-      'https://lqgzvolirohuettizkhx.supabase.co',
-      'sb_publishable_YlYQC-Sv2prP2QPmZs48rA_gjSb62aB'
-    );
+    (function() {
+      var legalModal = document.getElementById('legalModal');
+      var legalModalOverlay = document.getElementById('legalModalOverlay');
+      var legalModalClose = document.getElementById('legalModalClose');
+      var legalModalTitle = document.getElementById('legalModalTitle');
+      var legalModalBody = document.getElementById('legalModalBody');
 
-    // Cache for loaded documents
-    let legalDocsCache = null;
+      if (!legalModal) return;
 
-    async function loadLegalDocuments() {
-      if (legalDocsCache) return legalDocsCache;
-      const { data, error } = await supabase.rpc('get_current_legal_documents_v1');
-      if (error) {
-        console.error('Failed to load legal documents:', error);
-        return null;
+      var legalDocsCache = null;
+      var supabaseClient = null;
+
+      function getClient() {
+        if (supabaseClient) return supabaseClient;
+        if (window.supabase && window.supabase.createClient) {
+          supabaseClient = window.supabase.createClient(
+            'https://lqgzvolirohuettizkhx.supabase.co',
+            'sb_publishable_YlYQC-Sv2prP2QPmZs48rA_gjSb62aB'
+          );
+        }
+        return supabaseClient;
       }
-      legalDocsCache = data;
-      return data;
-    }
 
-    // Modal elements
-    const legalModal = document.getElementById('legalModal');
-    const legalModalOverlay = document.getElementById('legalModalOverlay');
-    const legalModalClose = document.getElementById('legalModalClose');
-    const legalModalTitle = document.getElementById('legalModalTitle');
-    const legalModalBody = document.getElementById('legalModalBody');
+      function openModal(title, body) {
+        legalModalTitle.textContent = title;
+        legalModalBody.innerHTML = body;
+        legalModal.classList.add('open');
+        document.body.classList.add('no-scroll');
+      }
 
-    function openLegalModal(title, content) {
-      legalModalTitle.textContent = title;
-      legalModalBody.innerHTML = content;
-      legalModal.classList.add('open');
-      document.body.classList.add('no-scroll');
-    }
+      function closeModal() {
+        legalModal.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+      }
 
-    function closeLegalModal() {
-      legalModal.classList.remove('open');
-      document.body.classList.remove('no-scroll');
-    }
-
-    legalModalOverlay.addEventListener('click', closeLegalModal);
-    legalModalClose.addEventListener('click', closeLegalModal);
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLegalModal();
-    });
-
-    // Attach click handlers to legal cards
-    document.querySelectorAll('.legal__card[data-doc-type]').forEach(card => {
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', async () => {
-        const docType = card.dataset.docType;
-
-        // Show loading state
-        openLegalModal('Загрузка...', '<p style="color: var(--text-secondary);">Загружаем документ...</p>');
-
-        const docs = await loadLegalDocuments();
-        if (!docs) {
-          legalModalTitle.textContent = 'Ошибка';
-          legalModalBody.innerHTML = '<p style="color: var(--text-secondary);">Не удалось загрузить документ. Попробуйте позже.</p>';
-          return;
-        }
-
-        const doc = docs.find(d => d.document_type === docType);
-        if (!doc) {
-          legalModalTitle.textContent = 'Не найдено';
-          legalModalBody.innerHTML = '<p style="color: var(--text-secondary);">Документ не найден.</p>';
-          return;
-        }
-
-        legalModalTitle.textContent = doc.title;
-        legalModalBody.innerHTML = doc.content;
+      legalModalOverlay.addEventListener('click', closeModal);
+      legalModalClose.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
       });
-    });
+
+      async function loadDocs() {
+        if (legalDocsCache) return legalDocsCache;
+        var client = getClient();
+        if (!client) return null;
+        try {
+          var result = await client.rpc('get_current_legal_documents_v1');
+          if (result.error) throw result.error;
+          legalDocsCache = result.data;
+          return result.data;
+        } catch(e) {
+          console.error('Legal docs load error:', e);
+          return null;
+        }
+      }
+
+      document.querySelectorAll('.legal__card[data-doc-type]').forEach(function(card) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', async function() {
+          var docType = card.getAttribute('data-doc-type');
+
+          openModal('Загрузка...', '<p style="color: var(--text-secondary);">Загружаем документ...</p>');
+
+          var docs = await loadDocs();
+          if (!docs) {
+            legalModalTitle.textContent = 'Ошибка';
+            legalModalBody.innerHTML = '<p style="color: var(--text-secondary);">Не удалось загрузить документ. Попробуйте позже.</p>';
+            return;
+          }
+
+          var doc = docs.find(function(d) { return d.document_type === docType; });
+          if (!doc) {
+            legalModalTitle.textContent = 'Не найдено';
+            legalModalBody.innerHTML = '<p style="color: var(--text-secondary);">Документ не найден.</p>';
+            return;
+          }
+
+          legalModalTitle.textContent = doc.title;
+          legalModalBody.innerHTML = doc.content;
+        });
+      });
+    })();
   </script>
 
 </body>
