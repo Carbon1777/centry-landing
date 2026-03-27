@@ -26,7 +26,7 @@
       <nav class="header__nav">
         <a href="#about">О приложении</a>
         <a href="#features">Возможности</a>
-        <a href="#videos">Обучение</a>
+        <a href="#video">Видео</a>
         <a href="#download">Скачать</a>
         <a href="#contacts">Контакты</a>
       </nav>
@@ -41,7 +41,7 @@
     <nav class="mobile-nav__links">
       <a href="#about">О приложении</a>
       <a href="#features">Возможности</a>
-      <a href="#videos">Обучение</a>
+      <a href="#video">Видео</a>
       <a href="#download">Скачать</a>
       <a href="#contacts">Контакты</a>
     </nav>
@@ -165,71 +165,25 @@
     </div>
   </section>
 
-  <!-- ========== VIDEOS ========== -->
-  <section class="videos" id="videos">
+  <!-- ========== VIDEO ========== -->
+  <section class="video" id="video">
     <div class="container">
-      <h2 class="section-title">Обучение</h2>
-      <p class="section-subtitle">Видео-инструкции для быстрого старта</p>
-      <div class="videos__grid">
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Регистрация и профиль</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Поиск мест на карте</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Создание плана</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Приглашение друзей</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Голосование</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Чаты и общение</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Знаки внимания</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Бонусные токены</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Лидерборд</p>
-        </div>
-        <div class="videos__card">
-          <div class="videos__placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8DFF" stroke-width="1.5"/><polygon points="10,8 16,12 10,16" fill="#5B8DFF"/></svg>
-          </div>
-          <p class="videos__label">Настройки и FAQ</p>
+      <h2 class="section-title">Как работает Centry</h2>
+      <p class="section-subtitle">Посмотрите короткое видео о возможностях приложения</p>
+      <div class="phone">
+        <div class="phone__notch"></div>
+        <div class="phone__screen">
+          <video
+            class="phone__video"
+            controls
+            controlslist="nofullscreen"
+            disablepictureinpicture
+            preload="metadata"
+            playsinline
+          >
+            <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/intro.mp4" type="video/mp4">
+            Ваш браузер не поддерживает воспроизведение видео.
+          </video>
         </div>
       </div>
     </div>
@@ -407,7 +361,7 @@
         }
       });
     }, observerOptions);
-    document.querySelectorAll('.about__card, .features__step, .videos__card, .download__store, .contacts__card, .legal__card').forEach(el => {
+    document.querySelectorAll('.about__card, .features__step, .phone, .download__store, .contacts__card, .legal__card').forEach(el => {
       el.classList.add('fade-in');
       observer.observe(el);
     });
