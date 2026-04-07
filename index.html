@@ -437,6 +437,13 @@
       observer.observe(el);
     });
 
+    // На мобилке убираем fullscreen (не работает с портретным видео)
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('.episode-card__video').forEach(function(v) {
+        v.setAttribute('controlslist', 'nofullscreen');
+      });
+    }
+
     // ========== LEGAL DOCUMENTS (Supabase) ==========
     (function() {
       var legalModal = document.getElementById('legalModal');

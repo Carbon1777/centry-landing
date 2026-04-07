@@ -407,16 +407,27 @@ section { padding: 100px 0; }
   width: 100%;
 }
 
-/* Мобилка: максимально большие карточки, без fullscreen */
+/* Мобилка: видео на максимум */
 @media (max-width: 768px) {
-  .video .container { padding: 0 4px; }
+  .video { padding: 40px 0; }
+  .video .container { padding: 0; }
   .video .section-title,
-  .video .section-subtitle { padding: 0 20px; }
-  .episodes { gap: 10px; }
-  .episode-card { width: 100%; border-radius: 10px; }
-  .episode-card__frame { border-radius: 8px 8px 0 0; }
-  .episode-card__video::-webkit-media-controls-fullscreen-button { display: none; }
-  .episode-card__video::-webkit-media-controls-toggle-closed-captions-button { display: none; }
+  .video .section-subtitle { padding: 0 16px; }
+  .episodes { gap: 24px; padding: 0; }
+  .episode-card {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+  .episode-card:hover { transform: none; box-shadow: none; }
+  .episode-card__frame { border-radius: 0; }
+  .episode-card__video { width: 100%; }
+  .episode-card__info {
+    border: none;
+    padding: 10px 16px;
+    background: transparent;
+  }
 }
 .episode-card__info {
   width: 100%;
