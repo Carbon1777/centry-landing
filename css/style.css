@@ -407,6 +407,48 @@ section { padding: 100px 0; }
   width: 100%;
 }
 
+/* Мобилка: кастомные контролы */
+.mc {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  z-index: 4;
+}
+.mc__play, .mc__mute {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mc__progress {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255,255,255,0.3);
+  border-radius: 2px;
+  outline: none;
+}
+.mc__progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
 /* Мобилка: кроп видео — показываем только экран телефона */
 @media (max-width: 768px) {
   .video { padding: 40px 0; }

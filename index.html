@@ -437,10 +437,48 @@
       observer.observe(el);
     });
 
-    // На мобилке убираем fullscreen (не работает с портретным видео)
+    // Мобилка: убираем нативные controls, ставим свои (без fullscreen)
     if (window.innerWidth <= 768) {
-      document.querySelectorAll('.episode-card__video').forEach(function(v) {
-        v.setAttribute('controlslist', 'nofullscreen');
+      document.querySelectorAll('.episode-card__frame').forEach(function(frame) {
+        var video = frame.querySelector('video');
+        video.removeAttribute('controls');
+
+        // Создаём контролы
+        var ctrl = document.createElement('div');
+        ctrl.className = 'mc';
+        ctrl.innerHTML = '<button class="mc__play" aria-label="Play">▶</button>'
+          + '<input class="mc__progress" type="range" min="0" max="100" value="0">'
+          + '<button class="mc__mute" aria-label="Звук">🔊</button>';
+        frame.appendChild(ctrl);
+
+        var playBtn = ctrl.querySelector('.mc__play');
+        var progress = ctrl.querySelector('.mc__progress');
+        var muteBtn = ctrl.querySelector('.mc__mute');
+
+        playBtn.addEventListener('click', function() {
+          if (video.paused) { video.play(); playBtn.textContent = '⏸'; }
+          else { video.pause(); playBtn.textContent = '▶'; }
+        });
+
+        video.addEventListener('click', function() {
+          if (video.paused) { video.play(); playBtn.textContent = '⏸'; }
+          else { video.pause(); playBtn.textContent = '▶'; }
+        });
+
+        video.addEventListener('timeupdate', function() {
+          if (video.duration) progress.value = (video.currentTime / video.duration) * 100;
+        });
+
+        progress.addEventListener('input', function() {
+          if (video.duration) video.currentTime = (progress.value / 100) * video.duration;
+        });
+
+        muteBtn.addEventListener('click', function() {
+          video.muted = !video.muted;
+          muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        });
+
+        video.addEventListener('ended', function() { playBtn.textContent = '▶'; });
       });
     }
 
