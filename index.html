@@ -281,14 +281,6 @@
     </div>
   </section>
 
-  <!-- ========== VIDEO FULLSCREEN ========== -->
-  <div class="video-fs" id="videoFs">
-    <button class="video-fs__close" id="videoFsClose" aria-label="Закрыть">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <video class="video-fs__video" id="videoFsPlayer" controls playsinline></video>
-  </div>
-
   <!-- ========== DOWNLOAD ========== -->
   <section class="download" id="download">
     <div class="container">
@@ -466,41 +458,19 @@
       observer.observe(el);
     });
 
-    // ========== VIDEO FULLSCREEN ==========
+    // ========== VIDEO FULLSCREEN (mobile only) ==========
     (function() {
-      var fs = document.getElementById('videoFs');
-      var fsVideo = document.getElementById('videoFsPlayer');
-      var fsClose = document.getElementById('videoFsClose');
-      if (!fs) return;
-
-      function openFs(src, time) {
-        fsVideo.src = src;
-        fsVideo.currentTime = time || 0;
-        fs.classList.add('open');
-        document.body.classList.add('no-scroll');
-        fsVideo.play();
-      }
-
-      function closeFs() {
-        fsVideo.pause();
-        fs.classList.remove('open');
-        document.body.classList.remove('no-scroll');
-        fsVideo.removeAttribute('src');
-      }
-
-      fsClose.addEventListener('click', closeFs);
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && fs.classList.contains('open')) closeFs();
-      });
-
-      // Кнопка fullscreen на каждой карточке
       document.querySelectorAll('.episode-card__fs-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
-          var frame = btn.closest('.episode-card__frame');
-          var video = frame.querySelector('video');
-          var src = video.querySelector('source').src;
-          video.pause();
-          openFs(src, video.currentTime);
+          var card = btn.closest('.episode-card');
+          var isOpen = card.classList.contains('episode-card--fullscreen');
+          if (isOpen) {
+            card.classList.remove('episode-card--fullscreen');
+            document.body.classList.remove('no-scroll');
+          } else {
+            card.classList.add('episode-card--fullscreen');
+            document.body.classList.add('no-scroll');
+          }
         });
       });
     })();
