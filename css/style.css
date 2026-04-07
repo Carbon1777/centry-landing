@@ -378,7 +378,7 @@ section { padding: 100px 0; }
   margin: 0 auto;
 }
 .episode-card {
-  width: calc(25% - 18px);
+  width: calc(33.333% - 16px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -736,7 +736,7 @@ section { padding: 100px 0; }
 @media (max-width: 1024px) {
   .about__grid { grid-template-columns: repeat(2, 1fr); }
   .episodes { gap: 20px; }
-  .episode-card { width: calc(33.333% - 14px); }
+  .episode-card { width: calc(50% - 10px); }
   .features__steps { flex-wrap: wrap; gap: 24px; }
   .features__step-arrow { display: none; }
   .features__step { max-width: none; flex-basis: 40%; }
@@ -766,7 +766,7 @@ section { padding: 100px 0; }
   .features__step { flex-basis: 100%; }
 
   .episodes { gap: 16px; }
-  .episode-card { width: calc(50% - 8px); }
+  .episode-card { width: 100%; }
 
   .download__grid { gap: 40px; }
   .download__qr { width: 150px; height: 150px; }
@@ -785,7 +785,7 @@ section { padding: 100px 0; }
   .hero__buttons { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; }
   .episodes { gap: 12px; }
-  .episode-card { width: calc(50% - 6px); }
+  .episode-card { width: 100%; }
   .episode-card__info { padding: 10px 12px; }
   .episode-card__title { font-size: 12px; }
   .episode-card__num { width: 24px; height: 24px; font-size: 11px; }
