@@ -446,7 +446,7 @@
         // Создаём контролы
         var ctrl = document.createElement('div');
         ctrl.className = 'mc';
-        ctrl.innerHTML = '<button class="mc__play" aria-label="Play">▶</button>'
+        ctrl.innerHTML = '<button class="mc__play" aria-label="Play"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></button>'
           + '<input class="mc__progress" type="range" min="0" max="100" value="0">'
           + '<button class="mc__mute" aria-label="Звук">🔊</button>';
         frame.appendChild(ctrl);
@@ -455,14 +455,17 @@
         var progress = ctrl.querySelector('.mc__progress');
         var muteBtn = ctrl.querySelector('.mc__mute');
 
+        var playIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>';
+        var pauseIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="5" y="3" width="4" height="18" rx="1"/><rect x="15" y="3" width="4" height="18" rx="1"/></svg>';
+
         playBtn.addEventListener('click', function() {
-          if (video.paused) { video.play(); playBtn.textContent = '⏸'; }
-          else { video.pause(); playBtn.textContent = '▶'; }
+          if (video.paused) { video.play(); playBtn.innerHTML = pauseIcon; }
+          else { video.pause(); playBtn.innerHTML = playIcon; }
         });
 
         video.addEventListener('click', function() {
-          if (video.paused) { video.play(); playBtn.textContent = '⏸'; }
-          else { video.pause(); playBtn.textContent = '▶'; }
+          if (video.paused) { video.play(); playBtn.innerHTML = pauseIcon; }
+          else { video.pause(); playBtn.innerHTML = playIcon; }
         });
 
         video.addEventListener('timeupdate', function() {
@@ -478,7 +481,7 @@
           muteBtn.textContent = video.muted ? '🔇' : '🔊';
         });
 
-        video.addEventListener('ended', function() { playBtn.textContent = '▶'; });
+        video.addEventListener('ended', function() { playBtn.innerHTML = playIcon; });
       });
     }
 
