@@ -422,7 +422,7 @@ section { padding: 100px 0; }
   .episode-card__frame {
     border-radius: 10px 10px 0 0;
     overflow: hidden;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 9 / 14;
   }
   .episode-card__video {
     width: 100%;
