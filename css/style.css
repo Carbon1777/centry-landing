@@ -397,104 +397,13 @@ section { padding: 100px 0; }
   transform: translateY(-4px);
 }
 .episode-card__frame {
-  position: relative;
   width: 100%;
   overflow: hidden;
-  background: #000;
-  aspect-ratio: 4 / 4;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
 }
 .episode-card__video {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-/* Expand button */
-.episode-card__expand {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 3;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.episode-card:hover .episode-card__expand {
-  opacity: 1;
-}
-/* На мобилках всегда видна */
-@media (max-width: 768px) {
-  .episode-card__expand { opacity: 1; }
-}
-.episode-card__expand:hover {
-  background: rgba(91, 141, 255, 0.7);
-}
-
-/* ========== VIDEO MODAL ========== */
-.video-modal {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 300;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-.video-modal.open {
-  opacity: 1;
-  pointer-events: all;
-}
-.video-modal__overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.92);
-}
-.video-modal__content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.video-modal__close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 2;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-.video-modal__close:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-.video-modal__video {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 12px;
 }
 .episode-card__info {
   width: 100%;
