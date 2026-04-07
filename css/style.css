@@ -383,21 +383,24 @@ section { padding: 100px 0; }
   flex-direction: column;
   align-items: center;
   gap: 0;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.episode-card:hover {
+  border-color: rgba(91, 141, 255, 0.4);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(91, 141, 255, 0.1);
+  transform: translateY(-4px);
 }
 .episode-card__frame {
   width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius) var(--radius) 0 0;
   overflow: hidden;
   aspect-ratio: 9 / 19.5;
-  transition: all 0.3s ease;
-}
-.episode-card:hover .episode-card__frame {
-  border-color: rgba(91, 141, 255, 0.3);
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.4),
-    0 0 60px rgba(91, 141, 255, 0.08);
+  background: #000;
 }
 .episode-card__video {
   display: block;
@@ -414,14 +417,7 @@ section { padding: 100px 0; }
   align-items: center;
   gap: 10px;
   padding: 14px 16px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-top: none;
-  border-radius: 0 0 var(--radius) var(--radius);
-  transition: all 0.3s ease;
-}
-.episode-card:hover .episode-card__info {
-  border-color: rgba(91, 141, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .episode-card__num {
   width: 30px;
