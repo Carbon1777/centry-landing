@@ -367,25 +367,48 @@ section { padding: 100px 0; }
   opacity: 0.4;
 }
 
-/* ========== VIDEO (phone mockup) ========== */
+/* ========== VIDEO EPISODES ========== */
 .video { background: var(--bg); }
-.phone {
-  position: relative;
-  width: 320px;
+.episodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1100px;
   margin: 0 auto;
+}
+.episode-card {
+  width: calc(25% - 18px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.episode-card__phone {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
   background: #1A1A1E;
-  border-radius: 48px;
-  padding: 14px;
+  border-radius: 32px;
+  padding: 10px;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.08),
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(91, 141, 255, 0.08);
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(91, 141, 255, 0.06);
+  transition: all 0.3s ease;
 }
-.phone__notch {
-  width: 120px;
-  height: 28px;
+.episode-card:hover .episode-card__phone {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 2px rgba(91, 141, 255, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(91, 141, 255, 0.12);
+}
+.episode-card__notch {
+  width: 80px;
+  height: 20px;
   background: #1A1A1E;
-  border-radius: 0 0 18px 18px;
+  border-radius: 0 0 12px 12px;
   margin: 0 auto;
   position: absolute;
   top: 0;
@@ -393,21 +416,43 @@ section { padding: 100px 0; }
   transform: translateX(-50%);
   z-index: 2;
 }
-.phone__screen {
-  border-radius: 36px;
+.episode-card__screen {
+  border-radius: 24px;
   overflow: hidden;
   background: #000;
   aspect-ratio: 9 / 19.5;
 }
-.phone__video {
+.episode-card__video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* Убираем fullscreen на Safari iOS */
-.phone__video::-webkit-media-controls-fullscreen-button {
+.episode-card__video::-webkit-media-controls-fullscreen-button {
   display: none;
+}
+.episode-card__info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.episode-card__num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px var(--accent-glow);
+}
+.episode-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* ========== DOWNLOAD ========== */
@@ -713,7 +758,8 @@ section { padding: 100px 0; }
 /* Tablet */
 @media (max-width: 1024px) {
   .about__grid { grid-template-columns: repeat(2, 1fr); }
-  .phone { width: 300px; }
+  .episodes { gap: 20px; }
+  .episode-card { width: calc(33.333% - 14px); }
   .features__steps { flex-wrap: wrap; gap: 24px; }
   .features__step-arrow { display: none; }
   .features__step { max-width: none; flex-basis: 40%; }
@@ -742,9 +788,11 @@ section { padding: 100px 0; }
 
   .features__step { flex-basis: 100%; }
 
-  .phone { width: 280px; border-radius: 40px; padding: 12px; }
-  .phone__notch { width: 100px; height: 24px; border-radius: 0 0 14px 14px; }
-  .phone__screen { border-radius: 30px; }
+  .episodes { gap: 16px; }
+  .episode-card { width: calc(50% - 8px); }
+  .episode-card__phone { border-radius: 28px; padding: 8px; }
+  .episode-card__notch { width: 60px; height: 16px; border-radius: 0 0 10px 10px; }
+  .episode-card__screen { border-radius: 22px; }
 
   .download__grid { gap: 40px; }
   .download__qr { width: 150px; height: 150px; }
@@ -762,7 +810,11 @@ section { padding: 100px 0; }
   .hero__title { font-size: 36px; }
   .hero__buttons { flex-direction: column; align-items: center; }
   .btn { width: 100%; justify-content: center; }
-  .phone { width: 240px; border-radius: 36px; padding: 10px; }
-  .phone__notch { width: 80px; height: 20px; border-radius: 0 0 12px 12px; }
-  .phone__screen { border-radius: 28px; }
+  .episodes { gap: 12px; }
+  .episode-card { width: calc(50% - 6px); }
+  .episode-card__phone { border-radius: 24px; padding: 6px; }
+  .episode-card__notch { width: 50px; height: 14px; border-radius: 0 0 8px 8px; }
+  .episode-card__screen { border-radius: 20px; }
+  .episode-card__title { font-size: 13px; }
+  .episode-card__num { width: 26px; height: 26px; font-size: 12px; }
 }
