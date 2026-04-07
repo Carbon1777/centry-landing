@@ -404,8 +404,7 @@ section { padding: 100px 0; }
 .episode-card__video {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 .episode-card__info {
   width: 100%;
