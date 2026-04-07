@@ -405,6 +405,11 @@ section { padding: 100px 0; }
   display: block;
   width: 100%;
 }
+/* На мобилках fullscreen сломан для портретного видео — скрываем */
+@media (max-width: 768px) {
+  .episode-card__video::-webkit-media-controls-fullscreen-button { display: none; }
+  .episode-card__video::-webkit-media-controls-toggle-closed-captions-button { display: none; }
+}
 .episode-card__info {
   width: 100%;
   display: flex;
