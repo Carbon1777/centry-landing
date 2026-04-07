@@ -174,6 +174,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-1-first-launch.mp4" type="video/mp4">
             </video>
@@ -186,6 +189,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-2-activity-feed.mp4" type="video/mp4">
             </video>
@@ -198,6 +204,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-3-places-list.mp4" type="video/mp4">
             </video>
@@ -210,6 +219,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-4-plans.mp4" type="video/mp4">
             </video>
@@ -222,6 +234,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-5-friends-and-chats.mp4" type="video/mp4">
             </video>
@@ -234,6 +249,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-6-profile.mp4" type="video/mp4">
             </video>
@@ -246,6 +264,9 @@
 
         <div class="episode-card">
           <div class="episode-card__frame">
+            <button class="episode-card__fs-btn" aria-label="На весь экран">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            </button>
             <video class="episode-card__video" controls preload="metadata" playsinline>
               <source src="https://lqgzvolirohuettizkhx.supabase.co/storage/v1/object/public/brand-media/episode-7-notifications.mp4" type="video/mp4">
             </video>
@@ -461,12 +482,10 @@
       }
 
       function closeFs() {
-        var time = fsVideo.currentTime;
         fsVideo.pause();
         fs.classList.remove('open');
         document.body.classList.remove('no-scroll');
         fsVideo.removeAttribute('src');
-        return time;
       }
 
       fsClose.addEventListener('click', closeFs);
@@ -474,27 +493,13 @@
         if (e.key === 'Escape' && fs.classList.contains('open')) closeFs();
       });
 
-      // Перехватываем нативный fullscreen → открываем свой
-      document.querySelectorAll('.episode-card__video').forEach(function(video) {
-        var src = video.querySelector('source').src;
-
-        video.addEventListener('fullscreenchange', function() {
-          if (document.fullscreenElement === video) {
-            document.exitFullscreen();
-            video.pause();
-            openFs(src, video.currentTime);
-          }
-        });
-        video.addEventListener('webkitfullscreenchange', function() {
-          if (document.webkitFullscreenElement === video) {
-            document.webkitExitFullscreen();
-            video.pause();
-            openFs(src, video.currentTime);
-          }
-        });
-        video.addEventListener('webkitbeginfullscreen', function() {
+      // Кнопка fullscreen на каждой карточке
+      document.querySelectorAll('.episode-card__fs-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var frame = btn.closest('.episode-card__frame');
+          var video = frame.querySelector('video');
+          var src = video.querySelector('source').src;
           video.pause();
-          if (video.webkitExitFullscreen) video.webkitExitFullscreen();
           openFs(src, video.currentTime);
         });
       });

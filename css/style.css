@@ -397,6 +397,7 @@ section { padding: 100px 0; }
   transform: translateY(-4px);
 }
 .episode-card__frame {
+  position: relative;
   width: 100%;
   overflow: hidden;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
@@ -404,6 +405,27 @@ section { padding: 100px 0; }
 .episode-card__video {
   display: block;
   width: 100%;
+}
+/* Кнопка fullscreen на карточке */
+.episode-card__fs-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, background 0.2s;
+}
+.episode-card__fs-btn:hover {
+  background: var(--accent);
 }
 /* ========== VIDEO FULLSCREEN MODAL ========== */
 .video-fs {
@@ -444,6 +466,7 @@ section { padding: 100px 0; }
   .episodes { gap: 12px; padding: 0 8px; }
   .episode-card { width: 100%; border-radius: 12px; }
   .episode-card__frame { border-radius: 10px 10px 0 0; }
+  .episode-card__video::-webkit-media-controls-fullscreen-button { display: none; }
 }
 .episode-card__info {
   width: 100%;
