@@ -406,79 +406,17 @@ section { padding: 100px 0; }
   display: block;
   width: 100%;
 }
-/* Кнопка fullscreen — только на мобилке */
-.episode-card__fs-btn {
-  display: none;
-}
 
-/* Мобилка: карточка разворачивается на весь экран */
+/* Мобилка: максимально большие карточки, без fullscreen */
 @media (max-width: 768px) {
-  .episode-card__fs-btn {
-    display: flex;
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    z-index: 3;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Когда карточка развёрнута */
-  .episode-card--fullscreen {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    z-index: 999 !important;
-    border-radius: 0 !important;
-    border: none !important;
-    background: #000 !important;
-    margin: 0 !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .episode-card--fullscreen .episode-card__frame {
-    border-radius: 0 !important;
-    flex: 1;
-    display: flex;
-    align-items: center;
-  }
-  .episode-card--fullscreen .episode-card__video {
-    width: 100%;
-    max-height: 100vh;
-    object-fit: contain;
-  }
-  .episode-card--fullscreen .episode-card__info {
-    display: none;
-  }
-  .episode-card--fullscreen .episode-card__fs-btn {
-    top: 12px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-  }
-}
-
-/* Мобилка: убираем отступы, карточки на всю ширину */
-@media (max-width: 768px) {
-  .video .container { padding: 0; }
+  .video .container { padding: 0 4px; }
   .video .section-title,
-  .video .section-subtitle { padding: 0 24px; }
-  .episodes { gap: 12px; padding: 0 8px; }
-  .episode-card { width: 100%; border-radius: 12px; }
-  .episode-card__frame { border-radius: 10px 10px 0 0; }
+  .video .section-subtitle { padding: 0 20px; }
+  .episodes { gap: 10px; }
+  .episode-card { width: 100%; border-radius: 10px; }
+  .episode-card__frame { border-radius: 8px 8px 0 0; }
   .episode-card__video::-webkit-media-controls-fullscreen-button { display: none; }
+  .episode-card__video::-webkit-media-controls-toggle-closed-captions-button { display: none; }
 }
 .episode-card__info {
   width: 100%;
