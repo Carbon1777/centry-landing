@@ -400,7 +400,7 @@ section { padding: 100px 0; }
   width: 100%;
   overflow: hidden;
   background: #000;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 4;
 }
 .episode-card__video {
   display: block;
