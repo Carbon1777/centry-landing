@@ -260,6 +260,14 @@
     </div>
   </section>
 
+  <!-- ========== VIDEO FULLSCREEN ========== -->
+  <div class="video-fs" id="videoFs">
+    <button class="video-fs__close" id="videoFsClose" aria-label="Закрыть">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <video class="video-fs__video" id="videoFsPlayer" controls playsinline></video>
+  </div>
+
   <!-- ========== DOWNLOAD ========== -->
   <section class="download" id="download">
     <div class="container">
@@ -436,6 +444,61 @@
       el.classList.add('fade-in');
       observer.observe(el);
     });
+
+    // ========== VIDEO FULLSCREEN ==========
+    (function() {
+      var fs = document.getElementById('videoFs');
+      var fsVideo = document.getElementById('videoFsPlayer');
+      var fsClose = document.getElementById('videoFsClose');
+      if (!fs) return;
+
+      function openFs(src, time) {
+        fsVideo.src = src;
+        fsVideo.currentTime = time || 0;
+        fs.classList.add('open');
+        document.body.classList.add('no-scroll');
+        fsVideo.play();
+      }
+
+      function closeFs() {
+        var time = fsVideo.currentTime;
+        fsVideo.pause();
+        fs.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+        fsVideo.removeAttribute('src');
+        return time;
+      }
+
+      fsClose.addEventListener('click', closeFs);
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && fs.classList.contains('open')) closeFs();
+      });
+
+      // Перехватываем нативный fullscreen → открываем свой
+      document.querySelectorAll('.episode-card__video').forEach(function(video) {
+        var src = video.querySelector('source').src;
+
+        video.addEventListener('fullscreenchange', function() {
+          if (document.fullscreenElement === video) {
+            document.exitFullscreen();
+            video.pause();
+            openFs(src, video.currentTime);
+          }
+        });
+        video.addEventListener('webkitfullscreenchange', function() {
+          if (document.webkitFullscreenElement === video) {
+            document.webkitExitFullscreen();
+            video.pause();
+            openFs(src, video.currentTime);
+          }
+        });
+        video.addEventListener('webkitbeginfullscreen', function() {
+          video.pause();
+          if (video.webkitExitFullscreen) video.webkitExitFullscreen();
+          openFs(src, video.currentTime);
+        });
+      });
+    })();
 
     // ========== LEGAL DOCUMENTS (Supabase) ==========
     (function() {

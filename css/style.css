@@ -405,10 +405,45 @@ section { padding: 100px 0; }
   display: block;
   width: 100%;
 }
-/* На мобилках fullscreen сломан для портретного видео — скрываем */
+/* ========== VIDEO FULLSCREEN MODAL ========== */
+.video-fs {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 300;
+  background: #000;
+  display: none;
+}
+.video-fs.open { display: flex; align-items: center; justify-content: center; }
+.video-fs__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.video-fs__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Мобилка: убираем отступы, карточки на всю ширину */
 @media (max-width: 768px) {
-  .episode-card__video::-webkit-media-controls-fullscreen-button { display: none; }
-  .episode-card__video::-webkit-media-controls-toggle-closed-captions-button { display: none; }
+  .video .container { padding: 0; }
+  .video .section-title,
+  .video .section-subtitle { padding: 0 24px; }
+  .episodes { gap: 12px; padding: 0 8px; }
+  .episode-card { width: 100%; border-radius: 12px; }
+  .episode-card__frame { border-radius: 10px 10px 0 0; }
 }
 .episode-card__info {
   width: 100%;
