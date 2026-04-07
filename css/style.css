@@ -408,6 +408,17 @@ section { padding: 100px 0; }
   height: 100%;
   object-fit: contain;
 }
+/* Fullscreen: заполнить экран */
+.episode-card__video:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+}
+.episode-card__video:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;
+}
 .episode-card__info {
   width: 100%;
   display: flex;
