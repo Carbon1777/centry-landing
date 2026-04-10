@@ -509,22 +509,34 @@ section { padding: 100px 0; }
 .download__grid {
   display: flex;
   justify-content: center;
-  gap: 80px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 .download__store {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  align-items: stretch;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 200px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.download__store:hover {
+  border-color: rgba(91, 141, 255, 0.3);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 50px rgba(91, 141, 255, 0.08);
+  transform: translateY(-3px);
 }
 .download__qr {
   position: relative;
-  width: 180px;
-  height: 180px;
-  border-radius: var(--radius);
+  margin: 20px auto;
+  width: 148px;
+  height: 148px;
+  border-radius: 12px;
   overflow: hidden;
   background: #fff;
+  flex-shrink: 0;
 }
 .download__qr img {
   display: block;
@@ -545,28 +557,28 @@ section { padding: 100px 0; }
   justify-content: center;
   box-shadow: 0 0 0 3px #fff;
 }
-.download__qr-placeholder {
+.download__store .btn--store {
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid var(--border);
   width: 100%;
-  height: 100%;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px 20px;
 }
-.download__qr-placeholder span {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--text-secondary);
-  opacity: 0.3;
+.download__store .btn--store:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border);
+  transform: none;
 }
-.download__qr-placeholder small {
-  font-size: 12px;
+.download__store p {
+  font-size: 11px;
   color: var(--text-secondary);
   opacity: 0.4;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 16px 12px;
+  margin: 0;
 }
 
 /* ========== CONTACTS ========== */
@@ -857,7 +869,9 @@ section { padding: 100px 0; }
   .episodes { gap: 16px; }
   .episode-card { width: 100%; }
 
-  .download__grid { gap: 32px; }
+  .download__grid { gap: 12px; flex-direction: column; align-items: center; }
+  .download__store { width: 100%; max-width: 300px; }
+  .download__store .btn--store { border-top: none; }
   .download__qr { display: none; }
 
   .contacts__grid { grid-template-columns: repeat(2, 1fr); }
