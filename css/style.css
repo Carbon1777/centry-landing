@@ -519,10 +519,31 @@ section { padding: 100px 0; }
   gap: 20px;
 }
 .download__qr {
+  position: relative;
   width: 180px;
   height: 180px;
   border-radius: var(--radius);
   overflow: hidden;
+  background: #fff;
+}
+.download__qr img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.download__qr-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 3px #fff;
 }
 .download__qr-placeholder {
   width: 100%;
