@@ -536,10 +536,10 @@ section { padding: 100px 0; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
