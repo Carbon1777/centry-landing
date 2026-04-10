@@ -509,47 +509,82 @@ section { padding: 100px 0; }
 .download__grid {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 .download__store {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  width: 220px;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 20px;
   overflow: hidden;
-  width: 200px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.download__store::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), #8B5CF6);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .download__store:hover {
-  border-color: rgba(91, 141, 255, 0.3);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 50px rgba(91, 141, 255, 0.08);
-  transform: translateY(-3px);
+  border-color: rgba(91, 141, 255, 0.22);
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.5), 0 0 80px rgba(91, 141, 255, 0.07);
+  transform: translateY(-4px);
+}
+.download__store:hover::after { opacity: 1; }
+.download__store-head {
+  padding: 20px 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.download__store-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.download__store-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.download__store-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  margin-top: 3px;
 }
 .download__qr {
   position: relative;
-  margin: 20px auto;
-  width: 148px;
-  height: 148px;
+  margin: 16px 20px;
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
-  flex-shrink: 0;
+  flex: 1;
 }
 .download__qr img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 .download__qr-icon {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 28px;
-  height: 28px;
+  width: 28px; height: 28px;
   background: #fff;
   border-radius: 6px;
   display: flex;
@@ -557,29 +592,27 @@ section { padding: 100px 0; }
   justify-content: center;
   box-shadow: 0 0 0 3px #fff;
 }
-.download__store .btn--store {
-  border-radius: 0;
-  border: none;
-  border-top: 1px solid var(--border);
-  width: 100%;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.03);
+.download__store-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  transition: background 0.2s;
 }
-.download__store .btn--store:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: var(--border);
-  transform: none;
-}
-.download__store p {
-  font-size: 11px;
+.download__store-link:hover { background: rgba(255, 255, 255, 0.03); }
+.download__store-link--soon {
   color: var(--text-secondary);
-  opacity: 0.4;
-  text-align: center;
-  line-height: 1.4;
-  padding: 0 16px 12px;
-  margin: 0;
+  opacity: 0.45;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: default;
 }
+.download__store-link--soon:hover { background: none; }
 
 /* ========== CONTACTS ========== */
 .contacts { background: var(--bg); }
@@ -870,8 +903,7 @@ section { padding: 100px 0; }
   .episode-card { width: 100%; }
 
   .download__grid { gap: 12px; flex-direction: column; align-items: center; }
-  .download__store { width: 100%; max-width: 300px; }
-  .download__store .btn--store { border-top: none; }
+  .download__store { width: 100%; max-width: 320px; }
   .download__qr { display: none; }
 
   .contacts__grid { grid-template-columns: repeat(2, 1fr); }
