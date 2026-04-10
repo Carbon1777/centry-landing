@@ -41,15 +41,64 @@
       font-weight: 600;
       text-decoration: none;
       transition: opacity 0.2s;
+      width: 100%;
+      text-align: center;
     }
     .btn:active { opacity: 0.7; }
+    .btn--outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 14px;
+      padding: 12px 24px;
+    }
+    .stores {
+      display: none;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    .stores.visible {
+      display: flex;
+      flex-direction: column;
+    }
+    .hint {
+      display: none;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 16px;
+      line-height: 1.4;
+    }
+    .hint.visible { display: block; }
+    .copied-toast {
+      display: none;
+      font-size: 13px;
+      color: #4ade80;
+      margin-top: 8px;
+    }
+    .copied-toast.visible { display: block; }
   </style>
 </head>
 <body>
   <div class="card">
     <h1>Приглашение в план</h1>
     <p>Вас пригласили присоединиться к плану в Centry.</p>
+
     <a id="open-btn" class="btn" href="#">Открыть в приложении</a>
+
+    <div id="stores" class="stores">
+      <a id="link-appstore" class="btn btn--outline" href="#" style="display:none;">
+        App Store
+      </a>
+      <a id="link-google" class="btn btn--outline" href="#" style="display:none;">
+        Google Play
+      </a>
+      <a id="link-rustore" class="btn btn--outline" href="#" style="display:none;">
+        RuStore
+      </a>
+    </div>
+
+    <div id="copied-toast" class="copied-toast">Ссылка скопирована — откройте приложение после установки</div>
+    <div id="hint" class="hint">После установки приложение автоматически подхватит приглашение.</div>
   </div>
 
   <script>
@@ -60,17 +109,58 @@
       // Deep link в приложение через custom scheme
       var deepLink = 'centry://plan-invite' + (token ? '?token=' + encodeURIComponent(token) : '');
 
+      // Полный HTTPS URL для clipboard (приложение парсит его при первом запуске)
+      var fullUrl = window.location.href;
+
       var btn = document.getElementById('open-btn');
       btn.href = deepLink;
 
-      // Автоматический редирект: пробуем открыть приложение сразу.
-      // Если через 1.5 сек страница ещё видна — значит приложение не открылось,
-      // кнопка останется доступна для ручного тапа.
-      var t0 = Date.now();
-      window.location.href = deepLink;
+      // --- Копируем полный URL в clipboard для deferred deep link ---
+      if (token && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullUrl).then(function() {
+          document.getElementById('copied-toast').classList.add('visible');
+        }).catch(function() {
+          // Clipboard API недоступен — не критично
+        });
+      }
 
-      // Если пользователь вернулся на страницу (приложение не перехватило) —
-      // ничего не делаем, кнопка уже видна.
+      // --- Определяем платформу и показываем нужную кнопку стора ---
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPhone|iPad|iPod/i.test(ua);
+      var isAndroid = /Android/i.test(ua);
+
+      var appStoreUrl = 'https://apps.apple.com/app/id6761648930';
+      var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.centry.mobile.app';
+      var ruStoreUrl = 'https://apps.rustore.ru/app/com.centry.mobile.app';
+
+      var storesDiv = document.getElementById('stores');
+      var linkAppStore = document.getElementById('link-appstore');
+      var linkGoogle = document.getElementById('link-google');
+      var linkRustore = document.getElementById('link-rustore');
+
+      if (isIOS && appStoreUrl) {
+        linkAppStore.href = appStoreUrl;
+        linkAppStore.style.display = '';
+        storesDiv.classList.add('visible');
+      } else if (isAndroid) {
+        if (googlePlayUrl) {
+          linkGoogle.href = googlePlayUrl;
+          linkGoogle.style.display = '';
+          storesDiv.classList.add('visible');
+        }
+        if (ruStoreUrl) {
+          linkRustore.href = ruStoreUrl;
+          linkRustore.style.display = '';
+          storesDiv.classList.add('visible');
+        }
+      }
+
+      if (storesDiv.classList.contains('visible')) {
+        document.getElementById('hint').classList.add('visible');
+      }
+
+      // --- Пробуем открыть приложение через deep link ---
+      window.location.href = deepLink;
     })();
   </script>
 </body>
