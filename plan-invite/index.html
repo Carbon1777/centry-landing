@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Centry — Приглашение в план</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,13 +89,13 @@
     <a id="open-btn" class="btn" href="#">Открыть в приложении</a>
 
     <div id="stores" class="stores">
-      <a id="link-appstore" class="btn btn--outline" href="#" style="display:none;">
+      <a id="link-appstore" class="btn btn--outline" href="#" rel="noopener noreferrer" style="display:none;">
         App Store
       </a>
-      <a id="link-google" class="btn btn--outline" href="#" style="display:none;">
+      <a id="link-google" class="btn btn--outline" href="#" rel="noopener noreferrer" style="display:none;">
         Google Play
       </a>
-      <a id="link-rustore" class="btn btn--outline" href="#" style="display:none;">
+      <a id="link-rustore" class="btn btn--outline" href="#" rel="noopener noreferrer" style="display:none;">
         RuStore
       </a>
     </div>
@@ -131,7 +134,7 @@
 
       var appStoreUrl = 'https://apps.apple.com/app/id6761648930';
       var googlePlayUrl = 'https://play.google.com/store/apps/details?id=com.centry.mobile.app';
-      var ruStoreUrl = 'https://www.rustore.ru/catalog/app/website.centry.app?appName=Centry&rsm=1&mt_link_id=mcahm3&mt_sub1=qr&mt_sub2=website.centry.app&utm_source=qr&utm_campaign=website.centry.app&sign=jIac8u7KjMilJBJ_WQvSVEa8l3IaqRX029FGAz27ddo';
+      var ruStoreUrl = 'https://www.rustore.ru/catalog/app/website.centry.app';
 
       var storesDiv = document.getElementById('stores');
       var linkAppStore = document.getElementById('link-appstore');
