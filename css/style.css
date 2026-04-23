@@ -905,6 +905,7 @@ section { padding: 100px 0; }
   .download__grid { gap: 12px; flex-direction: column; align-items: center; }
   .download__store { width: 100%; max-width: 320px; }
   .download__qr { display: none; }
+  .download__store-head { padding-bottom: 16px; }
 
   .contacts__grid { grid-template-columns: repeat(2, 1fr); }
 
