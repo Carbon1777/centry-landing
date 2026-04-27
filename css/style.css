@@ -253,6 +253,16 @@ img { max-width: 100%; height: auto; display: block; }
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.12);
 }
+.btn--soon {
+  opacity: 0.45;
+  cursor: default;
+  color: var(--text-secondary);
+}
+.btn--soon:hover {
+  background: var(--surface);
+  transform: none;
+  border-color: var(--border);
+}
 .btn--store {
   background: var(--surface);
   color: var(--text-primary);
