@@ -218,6 +218,29 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center;
   flex-wrap: wrap;
 }
+.hero__studio {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.hero__studio:hover {
+  opacity: 1;
+  color: var(--text-primary);
+}
+.hero__studio-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
 /* ========== BUTTONS ========== */
 .btn {
@@ -851,6 +874,30 @@ section { padding: 100px 0; }
 .footer__copy {
   font-size: 13px;
   color: var(--text-secondary);
+}
+.footer__studio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.footer__studio:hover {
+  opacity: 1;
+  color: var(--text-primary);
+}
+.footer__studio-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.footer__studio strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 .footer__links {
   display: flex;
