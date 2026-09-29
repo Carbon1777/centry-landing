@@ -983,3 +983,56 @@ section { padding: 100px 0; }
   .episode-card__title { font-size: 12px; }
   .episode-card__num { width: 24px; height: 24px; font-size: 11px; }
 }
+
+/* ========== STATUS: НА ДОРАБОТКЕ ========== */
+/* Баннер вверху hero + отключённые кнопки сторов и QR в секции «Скачать». */
+.status-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto 32px;
+  padding: 14px 20px;
+  border: 1px solid rgba(91, 141, 255, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(91, 141, 255, 0.08);
+  box-shadow: 0 0 32px rgba(91, 141, 255, 0.12);
+  text-align: left;
+}
+.status-banner__dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+.status-banner__text {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+.status-banner__text strong {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.hero__buttons .btn--soon { cursor: not-allowed; user-select: none; }
+
+.download--off .download__qr { background: var(--surface-hover); }
+.download--off .download__qr-icon { display: none; }
+.download__store-link--off,
+.download__store-link--off:hover {
+  justify-content: center;
+  color: var(--text-secondary);
+  background: transparent;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .status-banner { margin-bottom: 24px; padding: 12px 16px; }
+  .status-banner__text { font-size: 13px; }
+}
